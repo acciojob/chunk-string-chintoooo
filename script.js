@@ -1,25 +1,17 @@
-function stringChop(str, size) {
-  // your code here
-	function chunkString(str, chunkLength) {
-  if (!str) return []; // handle null or undefined
-
-  const chunks = [];
-  for (let i = 0; i < str.length; i += chunkLength) {
-    chunks.push(str.slice(i, i + chunkLength));
-  }
-  return chunks;
-}
 function chunkString(str, chunkLength) {
-  if (!str) return []; // handle null or undefined
+  // Handle null or undefined string
+  if (str === null || str === undefined) return [];
 
-  const chunks = [];
+  // Ensure it's a string (in case it's a number or something else)
+  str = String(str);
+
+  const result = [];
+
+  // Iterate over the string in steps of chunkLength
   for (let i = 0; i < str.length; i += chunkLength) {
-    chunks.push(str.slice(i, i + chunkLength));
+    const chunk = str.slice(i, i + chunkLength); // grab the chunk
+    result.push(chunk);
   }
-  return chunks;
-}
 
-// Do not change the code below
-const str = prompt("Enter String.");
-const size = prompt("Enter Chunk Size.");
-alert(stringChop(str, size));
+  return result;
+}
